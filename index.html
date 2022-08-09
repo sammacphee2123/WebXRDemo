@@ -15,6 +15,39 @@
           });
         }
       });
+      AFRAME.registerComponent('spot',{
+        schema:{
+          linkto:{type:"string",default:""},
+          spotgroup:{type:"string",default:""},
+        },
+        init:function(){
+          
+          //make the icon look at the camera all the time
+          this.el.setAttribute("look-at","#cam");
+          
+          var data=this.data;
+          
+          this.el.addEventListener('click',function(){
+            ndata=data;
+            nthis=this;
+            
+            var cam=document.getElementById("cam");
+            cam.emit("zoomin");
+            
+            var fp=document.getElementById("camfadeplane");
+            fp.emit("camFadeIn");
+            //alert("Start zoom");
+          });
+          this.el.addEventListener('mouseleave',function(){
+            var cur=document.getElementById("cursor-visual");
+            cur.emit("stopFuse");
+          });
+          this.el.addEventListener('mouseenter', function (evt) {
+            var cur=document.getElementById("cursor-visual");
+            cur.emit("startFuse");
+          });
+        }
+      });
     </script>
   </head>
   <body>
