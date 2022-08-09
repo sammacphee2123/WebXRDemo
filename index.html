@@ -3,6 +3,18 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script>
+      function loadNewSpotDetails()
+      {   
+          
+          var ncam=document.getElementById("cam");
+          this.setAttribute("camera","position","-10 2 0");
+
+          this.emit("zoomout");
+        
+          var fp=document.getElementById("camfadeplane");
+          fp.emit("camFadeOut");
+        
+      }
       AFRAME.registerComponent('rotate-colour', {
         multiple: true,
         init: function () {
@@ -16,27 +28,18 @@
         }
       });
       AFRAME.registerComponent('spot',{
-        schema:{
-          linkto:{type:"string",default:""},
-          spotgroup:{type:"string",default:""},
-        },
         init:function(){
           
           //make the icon look at the camera all the time
           this.el.setAttribute("look-at","#cam");
-          
-          var data=this.data;
-          
+    
           this.el.addEventListener('click',function(){
-            ndata=data;
-            nthis=this;
-            
+           
             var cam=document.getElementById("cam");
             cam.emit("zoomin");
             
             var fp=document.getElementById("camfadeplane");
             fp.emit("camFadeIn");
-            //alert("Start zoom");
           });
           this.el.addEventListener('mouseleave',function(){
             var cur=document.getElementById("cursor-visual");
@@ -48,6 +51,8 @@
           });
         }
       });
+      var ccam=document.getElementById("cam");
+      ccam.addEventListener("animationcomplete",loadNewSpotDetails);
     </script>
   </head>
   <body>
