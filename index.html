@@ -24,6 +24,7 @@
         <img id="leaf" src="./images/leaf.png" />
         <img id="squirrel" src="./images/squirrel.png" />
         <img id="groundTexture" src="https://cdna.artstation.com/p/assets/images/images/016/042/456/large/cgshare-book-grass-003.jpg">
+        <img id="hotspot" src="https://cdn.glitch.com/c52283d6-3489-44e4-b56b-43550d1bc76c%2Fhotspot.png?v=1564471993959">
 
         <!-- COLOUR PALETTE
 
@@ -36,12 +37,18 @@
 
         -->
       </a-assets>
-      <a-camera>
-        <a-cursor  
-          animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
-          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1; repeat: indefinite"
-          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
-          >
+      <a-camera id="cam" camera="fov:80" position="0 1.6 0" look-controls
+                animation__zoomin="property:camera.fov;dur:2000;to:50;startEvents:zoomin;"
+                animation__zoomout="property:camera.fov;dur:1000;to:80;startEvents:zoomout;">
+        <a-cursor id="cursor-visual" cursor="fuse:true;fuseTimeout:2000" 
+                  material="shader:flat;color:#09B4FF" 
+                  position="0 0 -1" 
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.015;thetaLength:0"
+                  animation__mouseenter="property: geometry.thetaLength; dir: alternate; dur: 2000;
+                    easing: easeInSine; from:0;to: 360;startEvents:startFuse;pauseEvents:stopFuse;autoplay:false"
+                  animation__mouseleave="property: geometry.thetaLength; dir: alternate; dur: 500;
+                    easing: easeInSine; to: 0;startEvents:stopFuse;autoplay:false">
+            <a-entity geometry="primitive:ring;radiusOuter:0.015;radiusInner:0.01" material="shader:flat;color:#000000"></a-entity>
         </a-cursor>
       </a-camera>
       <a-image
@@ -67,6 +74,30 @@
         animation__mouseenter="property: scale; to: 2.3 2.3 2.3; dur: 300; startEvents: mouseenter"
         animation__mouseleave="property: scale; to: 2 2 2; dur: 300; startEvents: mouseleave">
       </a-image>
+
+      <!-- room teleport hotspots -->
+      <a-entity id="spots" hotspots>
+        <a-entity id="group-room1">
+          <a-image position="-10 0 0"></a-image>
+          <a-image position="-10 0 -2"></a-image>
+          <a-image position="2 0 -10"></a-image>
+        </a-entity>
+        <a-entity id="group-room2" scale="0 0 0">
+          <a-image position="10 0 2"></a-image>
+          <a-image position="-10 0 -2"></a-image>
+          <a-image position="2 0 -10"></a-image>
+        </a-entity>
+        <a-entity id="group-room3" scale="0 0 0">
+          <a-image position="10 0 2"></a-image>
+          <a-image position="10 0 4"></a-image>
+          <a-image position="2 0 -10"></a-image>
+        </a-entity>
+        <a-entity id="group-room4" scale="0 0 0">
+          <a-image position="10 0 2"></a-image>
+          <a-image position="0 0 10"></a-image>
+          <a-image position="-10 0 -2"></a-image>
+        </a-entity>
+      </a-entity>
 
       <a-sky color="#A4C8D5" background-image="linear-gradient(to bottom right, #80ADBC, #A4C8D5)"></a-sky>
 
