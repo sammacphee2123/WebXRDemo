@@ -5,12 +5,7 @@
     <script>
       function loadNewSpotDetails()
       {   
-          this.setAttribute('position', '10,0,0');
-          this.emit("zoomout");
-        
-          var fp=document.getElementById("camfadeplane");
-          fp.emit("camFadeOut");
-        
+          this.emit("zoomout");       
       }
       AFRAME.registerComponent('rotate-colour', {
         multiple: true,
