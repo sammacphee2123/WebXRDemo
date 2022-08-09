@@ -5,7 +5,15 @@
     <script>
       function loadNewSpotDetails()
       {   
-          this.emit("zoomout");       
+          
+          var ncam=document.getElementById("cam");
+          this.setAttribute("camera","position","-10 2 0");
+
+          this.emit("zoomout");
+        
+          var fp=document.getElementById("camfadeplane");
+          fp.emit("camFadeOut");
+        
       }
       AFRAME.registerComponent('rotate-colour', {
         multiple: true,
@@ -32,8 +40,6 @@
             
             var fp=document.getElementById("camfadeplane");
             fp.emit("camFadeIn");
-
-            loadNewSpotDetails();
           });
           this.el.addEventListener('mouseleave',function(){
             var cur=document.getElementById("cursor-visual");
@@ -78,10 +84,6 @@
                     easing: easeInSine; to: 0;startEvents:stopFuse;autoplay:false">
             <a-entity geometry="primitive:ring;radiusOuter:0.015;radiusInner:0.01" material="shader:flat;color:#000000"></a-entity>
         </a-cursor>
-        <a-plane id="camfadeplane" rotation="10 0.5 0" position="0 0 -0.5" material="color:#000000;transparent:true;opacity:0" width="2" height="2"
-                 animation__fadein="property:material.opacity;to:1;dur:2000;startEvents:camFadeIn"
-                 animation__fadeout="property:material.opacity;to:0;dur:200;startEvents:camFadeOut">
-        </a-plane>
       </a-camera>
       <a-image
         color="#E9BDBE" src="#bird" position="-5 2 -5" rotation="0 0 0" scale="2 2 2" id="bird-1" 
@@ -150,5 +152,9 @@
         position="-3 1 -4">
       </a-sound> -->
     </a-scene>
+    <script>
+      var ccam=document.getElementById("cam");
+      ccam.addEventListener("animationcomplete",loadNewSpotDetails);
+    </script>
   </body>
 </html>
