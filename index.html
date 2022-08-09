@@ -7,7 +7,7 @@
       {   
           
           var ncam=document.getElementById("cam");
-          this.setAttribute("camera","position","-10 2 0");
+          ncam.setAttribute("position","-10 2 0");
 
           this.emit("zoomout");
         
@@ -40,6 +40,8 @@
             
             var fp=document.getElementById("camfadeplane");
             fp.emit("camFadeIn");
+
+            loadNewSpotDetails();
           });
           this.el.addEventListener('mouseleave',function(){
             var cur=document.getElementById("cursor-visual");
@@ -152,9 +154,5 @@
         position="-3 1 -4">
       </a-sound> -->
     </a-scene>
-    <script>
-      var ccam=document.getElementById("cam");
-      ccam.addEventListener("animationcomplete",loadNewSpotDetails);
-    </script>
   </body>
 </html>
