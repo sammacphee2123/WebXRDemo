@@ -5,13 +5,13 @@
     <script>
       function loadNewSpotDetails()
       {   
-          var ncam=document.getElementById("cam");
-          ncam.setAttribute("camera","position","-10 2 0");
+          //var ncam=document.getElementById("cam");
+          //ncam.setAttribute("camera","position","-10 2 0");
 
           this.emit("zoomout");
         
-          var fp=document.getElementById("camfadeplane");
-          fp.emit("camFadeOut");
+          //var fp=document.getElementById("camfadeplane");
+          //fp.emit("camFadeOut");
         
       }
       AFRAME.registerComponent('rotate-colour', {
@@ -37,8 +37,8 @@
             var cam=document.getElementById("cam");
             cam.emit("zoomin");
             
-            var fp=document.getElementById("camfadeplane");
-            fp.emit("camFadeIn");
+            //var fp=document.getElementById("camfadeplane");
+            //fp.emit("camFadeIn");
 
             loadNewSpotDetails();
           });
