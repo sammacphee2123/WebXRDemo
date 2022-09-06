@@ -37,8 +37,8 @@
             var cam=document.getElementById("cam");
             cam.emit("zoomin");
             
-            //var fp=document.getElementById("camfadeplane");
-            //fp.emit("camFadeIn");
+            var fp=document.getElementById("camfadeplane");
+            fp.emit("camFadeIn");
 
             loadNewSpotDetails();
           });
@@ -113,32 +113,28 @@
       <!-- room teleport hotspots -->
       <a-image 
         spot 
-        src="#hotspot" position="0 2 0" scale="1 1 1"
-        animation__position="property: object3D.position.y; to: 2.2; dir: alternate; dur: 2000; loop: true"
+        src="#hotspot" position="-3 2 5" scale="1 1 1"
         animation__mouseenter="property: scale; to: 2.3 2.3 2.3; dur: 300; startEvents: mouseenter"
         animation__mouseleave="property: scale; to: 2 2 2; dur: 300; startEvents: mouseleave">
       </a-image>
 
       <a-image 
         spot 
-        src="#hotspot" position="-10 2 0"
-        animation__position="property: object3D.position.y; to: 2.2; dir: alternate; dur: 2000; loop: true"
+        src="#hotspot" position="-1 4 5"
         animation__mouseenter="property: scale; to: 2.3 2.3 2.3; dur: 300; startEvents: mouseenter"
         animation__mouseleave="property: scale; to: 2 2 2; dur: 300; startEvents: mouseleave">
       </a-image>
 
       <a-image 
         spot 
-        src="#hotspot" position="-10 2 10"
-        animation__position="property: object3D.position.y; to: 2.2; dir: alternate; dur: 2000; loop: true"
+        src="#hotspot" position="0 6 7"
         animation__mouseenter="property: scale; to: 2.3 2.3 2.3; dur: 300; startEvents: mouseenter"
         animation__mouseleave="property: scale; to: 2 2 2; dur: 300; startEvents: mouseleave">
       </a-image>
 
       <a-image 
         spot 
-        src="#hotspot" position="2 2 -10"
-        animation__position="property: object3D.position.y; to: 2.2; dir: alternate; dur: 2000; loop: true"
+        src="#hotspot" position="4 8 7"
         animation__mouseenter="property: scale; to: 2.3 2.3 2.3; dur: 300; startEvents: mouseenter"
         animation__mouseleave="property: scale; to: 2 2 2; dur: 300; startEvents: mouseleave">
       </a-image>
@@ -146,6 +142,19 @@
       <a-sky color="#A4C8D5" background-image="linear-gradient(to bottom right, #80ADBC, #A4C8D5)"></a-sky>
 
       <a-plane src="#groundTexture" rotation="-90 0 0" width="30" height="30" repeat="10 10"></a-plane>
+      
+      <a-box color="#B2AC88" position="-3 1 5" depth="1" height="1" width="1"></a-box>
+      <a-box color="#B2AC88" position="-1 3 5" depth="1" height="1" width="1"></a-box>
+      <a-box color="#B2AC88" position="0 5 7" depth="1" height="1" width="1"></a-box>
+      <a-box color="#B2AC88" position="4 7 7" depth="1" height="1" width="1"></a-box>
+
+      <a-image
+        color="#E9BDBE" src="#bird" position="4 8 7" rotation="0 0 0" scale="2 2 2" id="bird-2" 
+        rotate-colour
+        animation__position="property: object3D.position.y; to: 9.2; dir: alternate; dur: 2000; loop: true"
+        animation__mouseenter="property: scale; to: 2.3 2.3 2.3; dur: 300; startEvents: mouseenter"
+        animation__mouseleave="property: scale; to: 2 2 2; dur: 300; startEvents: mouseleave">
+      </a-image> 
 
       <!-- <a-light type="ambient" color="#445451"></a-light>
       <a-light type="point" intensity="2" position="2 4 4"></a-light> 
