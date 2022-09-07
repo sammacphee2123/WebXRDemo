@@ -1,6 +1,6 @@
 # WebXRDemo
 
-### Colour Pallette
+### Colour Palette
 Green      : #B2AC88 
 Light Blue : #A4C8D5
 Dark Blue  : #80ADBC
